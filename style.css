@@ -1,0 +1,96 @@
+/* Общие стили для body и заголовков */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+/* Стили для .sorting блока */
+.sorting {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.sorting p {
+    display: inline-block;
+    margin: 0;
+}
+
+/* Стили для формы сортировки */
+form {
+    display: inline-block;
+}
+
+/* Стили для селекта в форме сортировки */
+select {
+    padding: 5px;
+}
+
+/* Стили для #reviews-container блока */
+#reviews-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Стили для .form блока */
+.form {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #000000;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Стили для формы добавления отзыва */
+form#feedback-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Стили для label в форме добавления отзыва */
+label {
+    margin-top: 10px;
+}
+
+/* Стили для текстовых полей в форме добавления отзыва */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Стили для кнопки "Отправить" в форме добавления отзыва */
+.submit input[type="submit"] {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+/* Стили для #preview-container блока */
+#preview-container {
+    margin-top: 10px;
+}
+
+/* Стили для изображения превью в форме добавления отзыва */
+.preview-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+}
