@@ -20,18 +20,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Получение оригинального сообщения из базы данных
     $query = "SELECT message FROM reviews WHERE id=$reviewId";
-    $result = mysqli_query($connection, $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     $originalMessage = $row['message'];
 
     // Проверка, изменилось ли сообщение
     if ($editedMessage !== $originalMessage) {
         // Обновление данных в базе данных и добавление отметки об изменении
-        $editedMessage = mysqli_real_escape_string($connection, $editedMessage);
+        $editedMessage = mysqli_real_escape_string($conn, $editedMessage);
         $query = "UPDATE reviews 
                   SET modified_by_admin='1', message='$editedMessage', status='$status'
                   WHERE id=$reviewId";
-        mysqli_query($connection, $query);
+        mysqli_query($conn, $query);
 
         // Вывод сообщения об изменении администратором
         echo 'Отзыв изменен администратором.';

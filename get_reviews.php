@@ -8,9 +8,9 @@ include 'db.php';
 // Получение отзывов из базы данных с учетом выбранной сортировки и статуса "accepted"
     $query = "SELECT * FROM reviews WHERE status='accepted' ORDER BY ";
     if ($sort_by === 'name') {
-        $query .= "name ASC, date_added DESC";
+        $query .= "name ASC, created_at DESC";
     } elseif ($sort_by === 'email') {
-        $query .= "email ASC, date_added DESC";
+        $query .= "email ASC, created_at DESC";
     } else {
         // По умолчанию сортируем по времени добавления (дате)
         $query .= "created_at DESC";
@@ -32,14 +32,13 @@ include 'db.php';
         }
         
         if ($row['image_path']) {
-            // Set the maximum width and height for the image
-            $maxWidth = 200; // Change this to the desired width
-            $maxHeight = 150; // Change this to the desired height
+            // Определение максимальной ширины и высоты изображения.
+            $maxWidth = 200; 
+            $maxHeight = 150;
             
-            // Get the image dimensions using getimagesize()
             list($width, $height) = getimagesize($row['image_path']);
             
-            // Calculate the new dimensions while maintaining the aspect ratio
+            // Вычисление нового размера изображения
             $aspectRatio = $width / $height;
             if ($width > $maxWidth || $height > $maxHeight) {
                 if ($width / $maxWidth > $height / $maxHeight) {
@@ -54,7 +53,7 @@ include 'db.php';
                 $newHeight = $height;
             }
 
-            // Output the image with the new dimensions
+            // Вывод изображения новыми размерами
             echo '<img src="' . $row['image_path'] . '" alt="Изображение" width="' . $newWidth . '" height="' . $newHeight . '"><br>';
         }
         echo '</div>';

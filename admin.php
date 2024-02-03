@@ -57,14 +57,13 @@
         echo "Статус: " .$row['status'] . '<br>';
 
         if ($row['image_path']) {
-            // Set the maximum width and height for the image
-            $maxWidth = 50; // Change this to the desired width
-            $maxHeight = 50; // Change this to the desired height
+            // Определение максимальной ширины и высоты изображения.
+            $maxWidth = 50;
+            $maxHeight = 50;
             
-            // Get the image dimensions using getimagesize()
             list($width, $height) = getimagesize($row['image_path']);
             
-            // Calculate the new dimensions while maintaining the aspect ratio
+             // Вычисление нового размера изображения
             $aspectRatio = $width / $height;
             if ($width > $maxWidth || $height > $maxHeight) {
                 if ($width / $maxWidth > $height / $maxHeight) {
@@ -79,14 +78,12 @@
                 $newHeight = $height;
             }
     
-            // Output the image with the new dimensions
+            // Вывод изображения новыми размерами
             echo '<img src="' . $row['image_path'] . '" alt="Изображение" width="' . $newWidth . '" height="' . $newHeight . '"><br>';
         }
 
-        // Toggle the visibility of the edit form
         echo '<button onclick="toggleEditForm(' . $row['id'] . ')">Редактировать</button>';
 
-        // Edit form
         echo '<div style="display: none;" id="editForm_' . $row['id'] . '">';
         echo '<form action="edit_review.php" method="post">';
         echo '<input type="hidden" name="review_id" value="' . $row['id'] . '">';
